@@ -328,6 +328,9 @@ window.ViktorDateformatter = (function(){
 			return _n+_w;
 		});
 
+        // (dateStatus)
+        text = getDateStatus(date) + ", " + text;
+
 		return text;
 	}
 
@@ -370,4 +373,24 @@ window.ViktorDateformatter = (function(){
 		return 0;
 	}
 
+    // Previous, Today, Tomorrow, Upcoming
+    function getDateStatus(date) {
+      date = new Date(date);
+      var todayDate = new Date();
+      var tomorrowDate = new Date();
+      tomorrowDate.setDate(todayDate.getDate()+1);
+      var yesterdayDate = new Date();
+      yesterdayDate.setDate(todayDate.getDate()-1);
+      if (date.toDateString() == todayDate.toDateString()) {
+        return "Today";
+      } else if (date.toDateString() == tomorrowDate.toDateString()) {
+        return "Tomorrow ";
+      } else if (date.toDateString() == yesterdayDate.toDateString()) {
+        return "Yesterday";
+      } else if (date.toDateString() < yesterdayDate.toDateString()) {
+        return "Previous";
+      } else if (date.toDateString() > tomorrowDate.toDateString()) {
+        return "Upcoming";
+      }
+    }
 })();
