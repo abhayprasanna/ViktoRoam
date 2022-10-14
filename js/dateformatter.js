@@ -16,7 +16,7 @@
 if (window.ViktorDateformatter && typeof window.ViktorDateformatter.stop === 'function') window.ViktorDateformatter.stop();
 window.ViktorDateformatter = (function(){
 
-	var dateformat = window.ViktorOpts && window.ViktorOpts.dateformat || 'YYYY.MM.DD EEE';
+	var dateformat = window.ViktorOpts && window.ViktorOpts.dateformat || 'EE, D Mon, YYYY';
 	// formats dates, roam default is `Month Dth, YYYY`
 	/*
 	 * YYYY - year, 2020
@@ -387,9 +387,9 @@ window.ViktorDateformatter = (function(){
         return "Tomorrow ";
       } else if (date.toDateString() == yesterdayDate.toDateString()) {
         return "Yesterday";
-      } else if (date.toDateString() < yesterdayDate.toDateString()) {
+      } else if (date < yesterdayDate) {
         return "Previous";
-      } else if (date.toDateString() > tomorrowDate.toDateString()) {
+      } else if (date > tomorrowDate) {
         return "Upcoming";
       }
     }
