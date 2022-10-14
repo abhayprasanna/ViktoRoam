@@ -384,7 +384,7 @@ window.ViktorDateformatter = (function(){
       if (date.toDateString() == todayDate.toDateString()) {
         return "Today";
       } else if (date.toDateString() == tomorrowDate.toDateString()) {
-        return "Tomorrow ";
+        return "Tomorrow";
       } else if (date.toDateString() == yesterdayDate.toDateString()) {
         return "Yesterday";
       } else if (date < yesterdayDate) {
